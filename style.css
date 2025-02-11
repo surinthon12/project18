@@ -10,8 +10,60 @@ body {
 header {
     background-color: #882f32;
     color: white;
-    text-align: center;
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* สไตล์ของเมนู Hamburger (3 ขีด) */
+.menu-icon {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+/* สไตล์แถบเมนู */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ซ่อนเมนู */
+nav.hidden {
+    transform: translateX(-100%); /* ซ่อนเมนู */
+}
+
+/* สไตล์รายการเมนู */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 15px;
+    text-align: center;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    display: block;
+}
+
+/* สไตล์เมื่อเมนูแสดง */
+nav.visible {
+    transform: translateX(0); /* แสดงเมนู */
 }
 
 /* สไตล์ข้อความในส่วนหัว */

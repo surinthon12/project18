@@ -37,3 +37,9 @@ fetch("data/ampnmKK.geojson")
 })
 .catch(error => console.log("Error loading GeoJSON:", error)); // จัดการข้อผิดพลาด
 
+// เมื่อคลิกที่ 3 ขีด ให้แสดงหรือซ่อนเมนู
+document.getElementById("menu-toggle").addEventListener("click", function() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("visible"); // เพิ่มหรือลบคลาส visible
+    menu.classList.toggle("hidden"); // ซ่อนหรือแสดงเมนู
+});
