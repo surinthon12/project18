@@ -1,0 +1,86 @@
+/* ตั้งค่าพื้นฐานของหน้า */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* สไตล์ส่วนหัว */
+header {
+    background-color: #882f32;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* สไตล์ข้อความในส่วนหัว */
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 5px 0 0;
+}
+
+/* จัดสไตล์แผนที่ */
+#map {
+    width: 100%;
+    height: 100vh;  /* 100% ของความสูงหน้าจอ */
+    margin: 0;
+    padding: 0;
+}
+
+/* สไตล์ทั่วไปที่ใช้ในทุกหน้าจอ */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* สไตล์สำหรับแผนที่ */
+#map {
+    height: 100vh; /* ให้แผนที่ขยายเต็มหน้าจอ */
+}
+
+/* สไตล์สำหรับหน้าจอใหญ่ (คอมพิวเตอร์) */
+@media (min-width: 768px) {
+    /* กำหนด layout สำหรับคอมพิวเตอร์ */
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .left-side {
+        width: 50%;
+        padding: 20px;
+    }
+
+    .right-side {
+        width: 50%;
+        padding: 20px;
+    }
+}
+
+/* สไตล์สำหรับหน้าจอเล็ก (โทรศัพท์มือถือ) */
+@media (max-width: 767px) {
+    #map {
+        height: 80vh; /* แผนที่จะมีความสูงลดลงเพื่อให้เหมาะสมกับมือถือ */
+    }
+
+    /* การตั้งค่าที่เหมาะสมกับมือถือ */
+    .container {
+        display: block; /* เปลี่ยน layout จาก flex เป็น block */
+    }
+
+    .left-side, .right-side {
+        width: 100%; /* ให้แต่ละฝั่งขยายเต็มหน้าจอ */
+        padding: 10px;
+    }
+
+    .navbar {
+        font-size: 16px; /* ขนาดฟอนต์เล็กลงสำหรับมือถือ */
+    }
+}
