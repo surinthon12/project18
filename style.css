@@ -6,41 +6,87 @@ body {
     background-color: #f4f4f4;
 }
 
-/* สไตล์ส่วนหัว */
+/* ปรับให้ header อยู่บนสุด */
 header {
-    background-color: #882f32;
-    color: white;
-    padding: 10px;
+    background-color: #a04144;
+    color: rgb(255, 255, 255);
+    padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* เรียงเนื้อหาเป็นแนวตั้ง */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
+    position: relative; /* ให้สัมพันธ์กับเมนู */
+    /* z-index: 1000; ให้อยู่สูงกว่าหน้าเว็บ */
 }
 
+/* สไตล์ข้อความในส่วนหัว */
+header h1 {
+    font-size: 28px;
+    margin-bottom: 5px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+/* ปรับสไตล์ p */
+header p {
+    font-size: 18px;
+    margin: 0; 
+}
+
+/* จัดสไตล์แผนที่ */
+#map {
+    width: 100%;
+    height: 90.5vh;  /* 100% ของความสูงหน้าจอ */
+    margin: 0;
+    padding: 0;
+}
 
 /* สไตล์ของเมนู Hamburger (3 ขีด) */
 .menu-icon {
     font-size: 2em;
     cursor: pointer;
-    display: block; /* ตรวจสอบว่าปุ่มไม่ถูกซ่อน */
-    z-index: 1000; /* ให้แน่ใจว่าปุ่มอยู่บนสุด */
-    position: relative; /* หลีกเลี่ยงปัญหาการถูกบัง */
+    z-index: 1100; /* ให้อยู่ด้านบน */
+    position: absolute; /* ตำแหน่งสัมพันธ์กับ header */
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-
-/* สไตล์แถบเมนู */
-/* สไตล์แถบเมนู */
-nav {
+/* ซ่อนเมนูเริ่มต้น */
+#menu {
     position: fixed;
-    top: 60px; /* ปรับให้เมนูเริ่มจากด้านล่างของแถบหัว */
-    left: 0;
+    top: 60px;
+    left: -250px; /* เริ่มต้นซ่อน */
     width: 250px;
     height: 100%;
     background-color: #333;
     color: white;
     padding-top: 20px;
-    z-index: 1000;
     transition: transform 0.3s ease-in-out;
-} 
+}
+
+/* แสดงเมนูเมื่อคลาส visible ถูกเพิ่ม */
+#menu.visible {
+    transform: translateX(250px);
+}
+
+/* ปรับสไตล์เมนูให้เริ่มซ่อนอยู่ */
+nav {
+    position: fixed;
+    top: 0; /* เมนูจะเริ่มจากด้านบนของหน้า */
+    left: -250px; /* เริ่มซ่อนเมนูด้านซ้าย */
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding-top: 60px; /* ขยับให้ไม่ทับ header */
+    z-index: 1050; /* ให้อยู่เหนือ header */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* แสดงเมนูเมื่อเปิด */
+nav.visible {
+    transform: translateX(250px); /* ทำให้เมนูเลื่อนออกมา */
+}
+
 /* ซ่อนเมนู */
 nav.hidden {
     transform: translateX(-100%); /* ซ่อนเมนู */
@@ -67,37 +113,6 @@ nav ul li a {
 /* สไตล์เมื่อเมนูแสดง */
 nav.visible {
     transform: translateX(0); /* แสดงเมนู */
-}
-
-/* สไตล์ข้อความในส่วนหัว */
-header h1 {
-    font-size: 2.5em;
-    margin:  center;
-}
-
-header p {
-    font-size: 1.2em;
-    margin: 5px 0 0;
-}
-
-/* จัดสไตล์แผนที่ */
-#map {
-    width: 100%;
-    height: 100vh;  /* 100% ของความสูงหน้าจอ */
-    margin: 0;
-    padding: 0;
-}
-
-/* สไตล์ทั่วไปที่ใช้ในทุกหน้าจอ */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-/* สไตล์สำหรับแผนที่ */
-#map {
-    height: 100vh; /* ให้แผนที่ขยายเต็มหน้าจอ */
 }
 
 /* สไตล์สำหรับหน้าจอใหญ่ (คอมพิวเตอร์) */

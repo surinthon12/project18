@@ -48,15 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    // ฟังก์ชันเปิด/ปิดเมนู
     menuToggle.addEventListener("click", function () {
         console.log("Menu toggle clicked!");
         menu.classList.toggle("visible");
-        menu.classList.toggle("hidden");
+        menu.classList.toggle("hidden"); // ซ่อน/แสดงเมนู
     });
 });
 
-// ฟังก์ชันเปิด/ปิดเมนู
-document.getElementById('menu-toggle').addEventListener('click', function() {
-    var menu = document.getElementById('menu');
-    menu.classList.toggle('hidden'); // สลับการแสดงผลเมนู
-});
