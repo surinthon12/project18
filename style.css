@@ -10,7 +10,7 @@ body {
 header {
     background-color: #a04144;
     color: rgb(255, 255, 255);
-    padding: 7.5px;
+    padding: 7px;
     display: flex;
     flex-direction: column; /* เรียงเนื้อหาเป็นแนวตั้ง */
     align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
@@ -39,17 +39,6 @@ header p {
     padding: 0;
 }
 
-/* สไตล์ของเมนู Hamburger (3 ขีด) */
-.menu-icon {
-    font-size: 2em;
-    cursor: pointer;
-    z-index: 1100; /* ให้อยู่ด้านบน */
-    position: absolute; /* ตำแหน่งสัมพันธ์กับ header */
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 /* ซ่อนเมนูเริ่มต้น */
 #menu {
     position: fixed;
@@ -61,6 +50,17 @@ header p {
     color: white;
     padding-top: 20px;
     transition: transform 0.3s ease-in-out;
+}
+
+/* สไตล์ของเมนู Hamburger (3 ขีด) */
+.menu-icon {
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 1100; /* ให้อยู่ด้านบน */
+    position: absolute; /* ตำแหน่งสัมพันธ์กับ header */
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* แสดงเมนูเมื่อคลาส visible ถูกเพิ่ม */
