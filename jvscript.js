@@ -37,9 +37,26 @@ fetch("data/ampnmKK.geojson")
 })
 .catch(error => console.log("Error loading GeoJSON:", error)); // จัดการข้อผิดพลาด
 
-// เมื่อคลิกที่ 3 ขีด ให้แสดงหรือซ่อนเมนู
-document.getElementById("menu-toggle").addEventListener("click", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("JavaScript Loaded!"); // ตรวจสอบว่าไฟล์นี้โหลดจริง
+
+    const menuToggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("menu");
-    menu.classList.toggle("visible"); // เพิ่มหรือลบคลาส visible
-    menu.classList.toggle("hidden"); // ซ่อนหรือแสดงเมนู
+
+    if (!menuToggle || !menu) {
+        console.error("Menu toggle button or menu not found!");
+        return;
+    }
+
+    menuToggle.addEventListener("click", function () {
+        console.log("Menu toggle clicked!");
+        menu.classList.toggle("visible");
+        menu.classList.toggle("hidden");
+    });
+});
+
+// ฟังก์ชันเปิด/ปิดเมนู
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    var menu = document.getElementById('menu');
+    menu.classList.toggle('hidden'); // สลับการแสดงผลเมนู
 });

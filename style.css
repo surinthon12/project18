@@ -21,23 +21,26 @@ header {
 .menu-icon {
     font-size: 2em;
     cursor: pointer;
+    display: block; /* ตรวจสอบว่าปุ่มไม่ถูกซ่อน */
+    z-index: 1000; /* ให้แน่ใจว่าปุ่มอยู่บนสุด */
+    position: relative; /* หลีกเลี่ยงปัญหาการถูกบัง */
 }
 
+
+/* สไตล์แถบเมนู */
 /* สไตล์แถบเมนู */
 nav {
     position: fixed;
-    top: 0;
+    top: 60px; /* ปรับให้เมนูเริ่มจากด้านล่างของแถบหัว */
     left: 0;
     width: 250px;
     height: 100%;
     background-color: #333;
     color: white;
-    display: flex;
-    flex-direction: column;
-    padding-top: 60px;
+    padding-top: 20px;
+    z-index: 1000;
     transition: transform 0.3s ease-in-out;
-}
-
+} 
 /* ซ่อนเมนู */
 nav.hidden {
     transform: translateX(-100%); /* ซ่อนเมนู */
@@ -69,7 +72,7 @@ nav.visible {
 /* สไตล์ข้อความในส่วนหัว */
 header h1 {
     font-size: 2.5em;
-    margin: 0;
+    margin:  center;
 }
 
 header p {
@@ -135,4 +138,8 @@ body {
     .navbar {
         font-size: 16px; /* ขนาดฟอนต์เล็กลงสำหรับมือถือ */
     }
+}
+
+    nav.visible {
+        transform: translateX(0); /* ทำให้เมนูปรากฏ */
 }
