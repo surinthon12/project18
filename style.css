@@ -10,7 +10,7 @@ body {
 header {
     background-color: #a04144;
     color: rgb(255, 255, 255);
-    padding: 20px;
+    padding: 7.5px;
     display: flex;
     flex-direction: column; /* เรียงเนื้อหาเป็นแนวตั้ง */
     align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
