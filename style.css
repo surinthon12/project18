@@ -39,19 +39,19 @@ header p {
     padding: 0;
 }
 
-/* ซ่อนเมนูเริ่มต้น */
+/* ปรับเมนูให้เป็นแบบ fixed */
 #menu {
-    position: fixed;
-    top: 60px;
-    left: -250px; /* เริ่มต้นซ่อน */
+    position: absolute;
+    top: 50px;
+    left: 0;
     width: 250px;
-    height: 100%;
+    height: auto;
     background-color: #333;
     color: white;
-    padding-top: 20px;
+    padding-top: 10px;
     transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
 }
-
 /* สไตล์ของเมนู Hamburger (3 ขีด) */
 .menu-icon {
     font-size: 2em;
@@ -63,9 +63,9 @@ header p {
     transform: translateY(-50%);
 }
 
-/* แสดงเมนูเมื่อคลาส visible ถูกเพิ่ม */
+/* แสดงเมนูเมื่อเปิด */
 #menu.visible {
-    transform: translateX(250px);
+    transform: translateX(0);
 }
 
 /* ปรับสไตล์เมนูให้เริ่มซ่อนอยู่ */
@@ -92,21 +92,22 @@ nav.hidden {
     transform: translateX(-100%); /* ซ่อนเมนู */
 }
 
-/* สไตล์รายการเมนู */
+/* ปรับสไตล์รายการเมนู */
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.2em;
     display: block;
 }
 
