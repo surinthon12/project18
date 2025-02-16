@@ -1,5 +1,5 @@
 // สร้างแผนที่ใหม่ที่ใช้ id 'map' และตั้งพิกัดเริ่มต้นที่จังหวัดขอนแก่น (latitude: 16.4322, longitude: 102.8236) และระดับการซูมเป็น 15
-var map = L.map('map').setView([16.4322, 102.8236], 13); // setView() ใช้ในการตั้งค่าพิกัดและระดับการซูมของแผนที่
+var map = L.map('map').setView([16.4322, 102.8236], 12); // setView() ใช้ในการตั้งค่าพิกัดและระดับการซูมของแผนที่
 
 // กำหนดแหล่งข้อมูลของแผนที่ (Tile Layer) ที่จะใช้แสดงแผนที่ จาก OpenStreetMap
 var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
