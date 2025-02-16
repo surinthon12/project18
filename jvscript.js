@@ -7,11 +7,11 @@ var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 }).addTo(map); // addTo(map) ใช้เพิ่มแผนที่ให้กับตัวแปร map
 
 // ฟังก์ชันเพื่อโหลดไฟล์ GeoJSON จาก URL
-fetch("data/ampnmKK.geojson")
+fetch("data/TBnmKK.geojson")
 .then(response => response.json()) // แปลงข้อมูลที่ได้รับเป็น JSON
 .then(data => {
     // เพิ่มข้อมูล GeoJSON ลงในแผนที่
-    var ampnmKKLayer = L.geoJSON(data, {
+    var TBnmKKLayer = L.geoJSON(data, {
         style: { color: "blue" }, // กำหนดสีของเส้นขอบเขต
         onEachFeature: function(feature, layer) {
             // ตรวจสอบว่ามี properties ที่เรียกใช้งานอยู่จริง
@@ -29,7 +29,7 @@ fetch("data/ampnmKK.geojson")
 
     // เพิ่ม Layer Control
     var Layers = {
-        "ขอบเขตอำเภอ": ampnmKKLayer
+        "ขอบเขตตำบล": TBnmKKLayer
     };
 
     // เพิ่ม Layer Control
