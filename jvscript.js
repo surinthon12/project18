@@ -1,10 +1,37 @@
-// สร้างแผนที่ใหม่ที่ใช้ id 'map' และตั้งพิกัดเริ่มต้นที่จังหวัดขอนแก่น (latitude: 16.4322, longitude: 102.8236) และระดับการซูมเป็น 15
-var map = L.map('map').setView([16.4322, 102.8236], 12); // setView() ใช้ในการตั้งค่าพิกัดและระดับการซูมของแผนที่
+// สร้างแผนที่
+var map = L.map('map').setView([16.4322, 102.8236], 13); // พิกัดขอนแก่น
 
-// กำหนดแหล่งข้อมูลของแผนที่ (Tile Layer) ที่จะใช้แสดงแผนที่ จาก OpenStreetMap
+// เพิ่มแผนที่พื้นฐาน
 var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors' // การอ้างอิงแหล่งที่มาของแผนที่
-}).addTo(map); // addTo(map) ใช้เพิ่มแผนที่ให้กับตัวแปร map
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+ // ฟังก์ชันค้นหาตำแหน่งและเลื่อนแผนที่ไปยังผลลัพธ์
+ document.getElementById('searchForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // ป้องกันการรีโหลดหน้า
+
+    var searchText = document.getElementById('searchInput').value;
+
+    if (searchText) {
+        console.log("กำลังค้นหา: " + searchText);  // ตรวจสอบคำค้นหาที่ป้อนเข้ามา
+        var geocoder = L.Control.Geocoder.nominatim(); // ใช้ geocoder สำหรับการค้นหา
+        geocoder.geocode(searchText, function(results) {
+            console.log("ผลลัพธ์การค้นหา: ", results);
+            if (results.length > 0) {
+                var latlng = results[0].center;
+                map.flyTo(latlng, 13); // ซูมแผนที่ไปที่ผลลัพธ์การค้นหา
+                if (window.searchMarker) {
+                    map.removeLayer(window.searchMarker); // ลบ marker เก่าหากมี
+                }
+                window.searchMarker = L.marker(latlng).addTo(map) // เพิ่ม marker ใหม่ที่ตำแหน่ง
+                    .bindPopup("สถานที่: " + results[0].name) // ข้อความใน popup
+                    .openPopup(); // เปิด popup เมื่อเพิ่ม marker
+            } else {
+                alert("ไม่พบสถานที่ที่ค้นหา");
+            }
+        });
+    }
+});
 
 // ฟังก์ชันเพื่อโหลดไฟล์ GeoJSON จาก URL
 fetch("data/TBnmKK.geojson")
@@ -36,23 +63,3 @@ fetch("data/TBnmKK.geojson")
     var layerControl = L.control.layers({"OpenStreetMap": osmLayer}, Layers).addTo(map); // เพิ่มแผงควบคุมเลเยอร์
 })
 .catch(error => console.log("Error loading GeoJSON:", error)); // จัดการข้อผิดพลาด
-
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("JavaScript Loaded!"); // ตรวจสอบว่าไฟล์นี้โหลดจริง
-
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-
-    if (!menuToggle || !menu) {
-        console.error("Menu toggle button or menu not found!");
-        return;
-    }
-
-    // ฟังก์ชันเปิด/ปิดเมนู
-    menuToggle.addEventListener("click", function () {
-        console.log("Menu toggle clicked!");
-        menu.classList.toggle("visible");
-        menu.classList.toggle("hidden"); // ซ่อน/แสดงเมนู
-    });
-});
-
